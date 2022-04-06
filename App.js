@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Text, View, Image, TextInput} from 'react-native';
 
 const App = () => {
   return (
     <View>
       <View style={{width: 100, height: 100, backgroundColor: '#686de0'}} />
-      <Text>Tes 01</Text>
-      <Text>Tes 02</Text>
-      <Text>Tes 03</Text>
-      <Coba />
-      <Text>Tes 05</Text>
+      <Text>Text dari App</Text>
+      <FunctionalComponent />
+      <GreenBoxComponent />
       <Foto />
+      <GambarProfile />
       <TextInput style={{borderWidth: 1}} />
     </View>
   );
@@ -18,17 +17,38 @@ const App = () => {
 
 // functional component
 
-const Coba = () => {
-  return <Text>Tes 04 dari const coba</Text>;
+const FunctionalComponent = () => {
+  return <Text>Text dari functional component</Text>;
 };
 
 const Foto = () => {
   return (
     <Image
-      source={{uri: 'https://placeimg.com/100/100/nature'}}
+      source={{uri: 'https://placeimg.com/100/100/animals'}}
       style={{width: 100, height: 100}}
     />
   );
 };
+
+// class component
+class GreenBoxComponent extends Component {
+  render() {
+    return <Text>Text dari class component</Text>;
+  }
+}
+
+class GambarProfile extends Component {
+  render() {
+    return (
+      <View>
+        <Text>Ini gambar dari class component</Text>
+        <Image
+          source={{uri: 'https://placeimg.com/100/100/nature'}}
+          style={{width: 100, height: 100, borderRadius: 50}}
+        />
+      </View>
+    );
+  }
+}
 
 export default App;
