@@ -13,7 +13,7 @@ useEffect(()=>{
 setTimeout(() => {
   setJabatan('presiden')
 }, 2000);
-},[]);
+},[jabatan]);
 
 // useEffect(()=>{
 // console.log('component did update');

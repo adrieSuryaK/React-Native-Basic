@@ -5,6 +5,7 @@ import SampleComponent from './pages/SampleComponent';
 import FlexBox from './pages/FlexBox';
 import FlexBoxHook from './pages/FlexBoxHook'
 import PositionComponent from './pages/PositionComponent';
+import PropsDinamis from './pages/PropsDinamis';
 
 const App = () => {
   const [isShow, SetIsShow] = useState(true);
@@ -14,13 +15,14 @@ const App = () => {
     }, 6000);
   }, []);
   return (
-    <View>
+    <View style={{backgroundColor:'#ffbe76', flex:1}}>
       <ScrollView>
         {/* <SampleComponent />
         <StylingComponent /> */}
         {/* {isShow && <FlexBox />} */}
-        { isShow&& <FlexBoxHook />}
+        {/* { isShow&& <FlexBoxHook />} */}
         {/* <PositionComponent /> */}
+        <PropsDinamis/>
       </ScrollView>
     </View>
   );
