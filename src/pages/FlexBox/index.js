@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
 import {Text, View, Image} from 'react-native';
 
@@ -13,7 +16,7 @@ class FlexBox extends Component {
   componentDidMount() {
     console.log('==> component did mount');
     setTimeout(() => {
-      this.setState({jabatan: 'Presiden'});
+      this.setState({jabatan:'presiden'})
     }, 2000);
   }
 

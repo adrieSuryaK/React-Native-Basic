@@ -3,6 +3,7 @@ import {View, ScrollView} from 'react-native';
 import StylingComponent from './pages/StylingComponent';
 import SampleComponent from './pages/SampleComponent';
 import FlexBox from './pages/FlexBox';
+import FlexBoxHook from './pages/FlexBoxHook'
 import PositionComponent from './pages/PositionComponent';
 
 const App = () => {
@@ -17,7 +18,8 @@ const App = () => {
       <ScrollView>
         {/* <SampleComponent />
         <StylingComponent /> */}
-        {isShow && <FlexBox />}
+        {/* {isShow && <FlexBox />} */}
+        { isShow&& <FlexBoxHook />}
         {/* <PositionComponent /> */}
       </ScrollView>
     </View>

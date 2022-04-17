@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
 import Laptop from '../../assets/images/laptop.jpg';
