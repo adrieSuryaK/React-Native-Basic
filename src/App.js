@@ -7,6 +7,7 @@ import FlexBoxHook from './pages/FlexBoxHook';
 import PositionComponent from './pages/PositionComponent';
 import PropsDinamis from './pages/PropsDinamis';
 import StateDinamis from './pages/StateDinamis';
+import Communication from './pages/Communication';
 
 const App = () => {
   const [isShow, SetIsShow] = useState(true);
@@ -18,13 +19,14 @@ const App = () => {
   return (
     <View style={{backgroundColor: '#ffbe76', flex: 1}}>
       <ScrollView>
-        {/* <SampleComponent />
-        <StylingComponent /> */}
+        {/* <SampleComponent /> */}
+        {/* <StylingComponent /> */}
         {/* {isShow && <FlexBox />} */}
         {/* { isShow&& <FlexBoxHook />} */}
         {/* <PositionComponent /> */}
         {/* <PropsDinamis /> */}
-        <StateDinamis/>
+        {/* <StateDinamis/> */}
+        <Communication/>
       </ScrollView>
     </View>
   );
