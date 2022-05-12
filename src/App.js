@@ -8,6 +8,7 @@ import PositionComponent from './pages/PositionComponent';
 import PropsDinamis from './pages/PropsDinamis';
 import StateDinamis from './pages/StateDinamis';
 import Communication from './pages/Communication';
+import CallAPIVanilaJS from './pages/CallAPIVanilaJS';
 
 const App = () => {
   const [isShow, SetIsShow] = useState(true);
@@ -26,7 +27,8 @@ const App = () => {
         {/* <PositionComponent /> */}
         {/* <PropsDinamis /> */}
         {/* <StateDinamis/> */}
-        <Communication/>
+        {/* <Communication/> */}
+        <CallAPIVanilaJS/>
       </ScrollView>
     </View>
   );
