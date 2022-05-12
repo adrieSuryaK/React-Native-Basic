@@ -10,6 +10,7 @@ import StateDinamis from './pages/StateDinamis';
 import Communication from './pages/Communication';
 import CallAPIVanilaJS from './pages/CallAPIVanilaJS';
 import CallAPIAxios from './pages/CallAPIAxios';
+import CRUD_LocalAPI from './pages/CRUD_LocalAPI';
 
 const App = () => {
   const [isShow, SetIsShow] = useState(true);
@@ -19,7 +20,7 @@ const App = () => {
     }, 6000);
   }, []);
   return (
-    <View style={{backgroundColor: '#ffbe76', flex: 1}}>
+    <View style={{backgroundColor: '#6c5ce7', flex: 1}}>
       <ScrollView>
         {/* <SampleComponent /> */}
         {/* <StylingComponent /> */}
@@ -30,7 +31,8 @@ const App = () => {
         {/* <StateDinamis/> */}
         {/* <Communication/> */}
         {/* <CallAPIVanilaJS/> */}
-        <CallAPIAxios/>
+        {/* <CallAPIAxios/> */}
+        <CRUD_LocalAPI/>
       </ScrollView>
     </View>
   );
