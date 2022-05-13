@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 
-const Item = () =>{
+const Item = ({nama, alamat, email}) =>{
   return (
     <View style={styles.areahasil}>
-      <Image source={{uri:'https://robohash.org/adrie@email.com'}} style={styles.avatar}/>
+      <Image source={{uri:`https://robohash.org/${email}`}} style={styles.avatar}/>
       <View style={{marginLeft:10}}>
-        <Text style={styles.hasiltextinputdata1}>Nama Lengkap</Text>
-        <Text style={styles.hasiltextinputdata2}>Alamat</Text>
-        <Text style={styles.hasiltextinputdata2}>Email</Text>
+        <Text style={styles.hasiltextinputdata1}>{nama}</Text>
+        <Text style={styles.hasiltextinputdata2}>{alamat}</Text>
+        <Text style={styles.hasiltextinputdata2}>{email}</Text>
       </View>
       <Text style={styles.delete}>X</Text>
     </View>
@@ -20,6 +20,11 @@ const CRUD_LocalAPI = () => {
   const [nama, setNama] = useState("");
   const [alamat, setAlamat] = useState("");
   const [email, setEmail] = useState("");
+  const [users, setusers] = useState([]);
+
+useEffect (()=>{
+getData();
+},[]);
 
 const submit = () =>{
   const data = {
@@ -34,13 +39,22 @@ const submit = () =>{
     setNama("");
     setAlamat("");
     setEmail("");
+    getData();
   })
 }
+
+const getData = () =>{
+  axios.get('http://10.0.2.2:3004/localusers')
+  .then(res=> {console.log('res get data:', res);
+  setusers(res.data);
+  }) 
+}
+
   return (
     <View style={styles.container}>
       <Text style={styles.judul}>SIMPLE CRUD</Text>
       <View style={styles.area}>
-        <Text style={styles.subjudul}>FORM DAFTAR MAHASISWA</Text>
+        <Text style={styles.subjudul}>PENDAFTARAN ROBOHASH</Text>
         <Text style={styles.textinputdata}>Nama</Text>
         <TextInput style={styles.textinputan} placeholderTextColor='#bdc3c7' placeholder='Silakan masukan nama Anda'value={nama} onChangeText={(value)=>setNama(value)}/>
         <Text style={styles.textinputdata}>Alamat</Text>
@@ -53,10 +67,13 @@ const submit = () =>{
       </View>
       <View style={styles.garis}/>
       <View style={styles.area}>
-      <Text style={styles.subjudul}>HASIL PENYIMPANAN FORM</Text>
+      <Text style={styles.subjudul}>HASIL FORM</Text>
+      {users.map(user=>{
+        return <Item key={user.id} nama={user.nama} alamat={user.alamat} email={user.email}/>
+      })}
+      {/* <Item/>
       <Item/>
-      <Item/>
-      <Item/>
+      <Item/> */}
       </View>
     </View>
   )
@@ -120,38 +137,45 @@ const styles = StyleSheet.create({
     marginVertical:30
   },
   avatar:{
-    width:100,
-    height:100,
-    borderRadius:100,
+    width:80,
+    height:80,
+    borderRadius:80,
     borderColor:'black',
-    borderWidth:1,
-    marginTop:20
+    borderWidth:1
   },
   areahasil:{
     flexDirection:'row',
     backgroundColor: '#a29bfe',
     marginHorizontal:20,
-    marginBottom:20,
-    alignItems:'center'
+    alignItems:'center',
+    elevation: 5,
+    shadowColor: 'black',
+    padding:10,
+    marginVertical:5
   },
   hasiltextinputdata1:{
-    fontSize:18,
-    color:'white',
+    fontSize:20,
+    color:'black',
     paddingLeft:20,
     fontWeight:'bold'
   },
   hasiltextinputdata2:{
-    fontSize:18,
-    color:'black',
+    fontSize:14,
+    color:'#bdc3c7',
     paddingLeft:20,
   },
   delete:{
-    fontSize:20,
-    color:'red',
+    fontSize:18,
+    color:'white',
     fontWeight:'bold',
     position:'absolute', 
-    top:0, 
-    right:0,
-    marginTop:25
+    top:10, 
+    right:10,
+    backgroundColor:'#f8a5c2',
+    width:25,
+    textAlign:'center',
+    borderRadius:25,
+    elevation: 5,
+    shadowColor: 'black',
   }
 })

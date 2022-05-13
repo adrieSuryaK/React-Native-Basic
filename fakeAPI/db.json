@@ -2,7 +2,7 @@
   "localusers": [
     {
       "id": 1,
-      "nama": "adrie",
+      "nama": "adri",
       "alamat": "gatak",
       "email": "adrie@email.com"
     },
@@ -11,6 +11,12 @@
       "alamat": "gatak",
       "email": "erma@email.com",
       "id": 2
+    },
+    {
+      "nama": "fiean",
+      "alamat": "pajang",
+      "email": "fiean@email.com",
+      "id": 3
     }
   ]
 }
