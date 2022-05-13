@@ -1,24 +1,16 @@
 {
-  "posts": [
+  "localusers": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "nama": "adrie",
+      "alamat": "gatak",
+      "email": "adrie@email.com"
     },
     {
-      "title": "tes-server",
-      "author": "adrie",
+      "nama": "erma",
+      "alamat": "gatak",
+      "email": "erma@email.com",
       "id": 2
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

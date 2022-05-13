@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
+import axios from 'axios'
 
 const Item = () =>{
   return (
@@ -16,20 +17,39 @@ const Item = () =>{
 }
 
 const CRUD_LocalAPI = () => {
+  const [nama, setNama] = useState("");
+  const [alamat, setAlamat] = useState("");
+  const [email, setEmail] = useState("");
+
+const submit = () =>{
+  const data = {
+  nama: nama,
+  alamat: alamat,
+  email:email,
+  }
+  console.log ('data before send', data);
+  axios.post('http://10.0.2.2:3004/localusers', data)
+  .then(res=>{
+    console.log('res: ', res);
+    setNama("");
+    setAlamat("");
+    setEmail("");
+  })
+}
   return (
     <View style={styles.container}>
       <Text style={styles.judul}>SIMPLE CRUD</Text>
       <View style={styles.area}>
         <Text style={styles.subjudul}>FORM DAFTAR MAHASISWA</Text>
         <Text style={styles.textinputdata}>Nama</Text>
-        <TextInput style={styles.textinputan} placeholderTextColor='#bdc3c7' placeholder='Silakan masukan nama Anda'/>
+        <TextInput style={styles.textinputan} placeholderTextColor='#bdc3c7' placeholder='Silakan masukan nama Anda'value={nama} onChangeText={(value)=>setNama(value)}/>
         <Text style={styles.textinputdata}>Alamat</Text>
-        <TextInput style={styles.textinputan} placeholderTextColor='#bdc3c7' placeholder='Masukan alamat lengkap'/>
+        <TextInput style={styles.textinputan} placeholderTextColor='#bdc3c7' placeholder='Masukan alamat lengkap'value={alamat} onChangeText={(value)=>setAlamat(value)}/>
         <Text style={styles.textinputdata}>Email</Text>
-        <TextInput style={styles.textinputan} placeholderTextColor='#bdc3c7' placeholder='Masukan email aktif'/>
+        <TextInput style={styles.textinputan} placeholderTextColor='#bdc3c7' placeholder='Masukan email aktif'value={email} onChangeText={(value)=>setEmail(value)}/>
       </View>
       <View style={styles.viewtombol}>
-      <Button title='Simpan' color='black'/>
+      <Button title='Simpan' color='black' onPress={submit}/>
       </View>
       <View style={styles.garis}/>
       <View style={styles.area}>
