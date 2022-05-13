@@ -1,22 +1,10 @@
 {
   "localusers": [
     {
-      "id": 1,
-      "nama": "adri",
+      "nama": "aqila",
       "alamat": "gatak",
-      "email": "adrie@email.com"
-    },
-    {
-      "nama": "erma",
-      "alamat": "gatak",
-      "email": "erma@email.com",
+      "email": "aqila@email.com",
       "id": 2
-    },
-    {
-      "nama": "fiean",
-      "alamat": "pajang",
-      "email": "fiean@email.com",
-      "id": 3
     },
     {
       "nama": "widya",
@@ -25,10 +13,28 @@
       "id": 4
     },
     {
-      "nama": "aqila",
+      "nama": "tatiek",
       "alamat": "gatak",
-      "email": "aqila@email.com",
+      "email": "tatiek@email.com",
       "id": 5
+    },
+    {
+      "nama": "topa",
+      "alamat": "gatak",
+      "email": "topa@email.com",
+      "id": 7
+    },
+    {
+      "nama": "erma",
+      "alamat": "gatak",
+      "email": "erma@email.com",
+      "id": 8
+    },
+    {
+      "nama": "fiean",
+      "alamat": "gatak",
+      "email": "fiean@email.com",
+      "id": 9
     }
   ]
 }
