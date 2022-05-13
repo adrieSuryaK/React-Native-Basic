@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native'
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 
-const Item = ({nama, alamat, email}) =>{
+const Item = ({nama, alamat, email, onpress}) =>{
   return (
     <View style={styles.areahasil}>
+      <TouchableOpacity onPress={onpress}>
       <Image source={{uri:`https://robohash.org/${email}`}} style={styles.avatar}/>
+      </TouchableOpacity>
       <View style={{marginLeft:10}}>
         <Text style={styles.hasiltextinputdata1}>{nama}</Text>
         <Text style={styles.hasiltextinputdata2}>{alamat}</Text>
@@ -20,7 +22,9 @@ const CRUD_LocalAPI = () => {
   const [nama, setNama] = useState("");
   const [alamat, setAlamat] = useState("");
   const [email, setEmail] = useState("");
-  const [users, setusers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [button, setButton] = useState("SIMPAN");
+  const [selectedUser, setSelectedUser] = useState({});
 
 useEffect (()=>{
 getData();
@@ -32,22 +36,43 @@ const submit = () =>{
   alamat: alamat,
   email:email,
   }
-  console.log ('data before send', data);
-  axios.post('http://10.0.2.2:3004/localusers', data)
-  .then(res=>{
-    console.log('res: ', res);
-    setNama("");
-    setAlamat("");
-    setEmail("");
-    getData();
-  })
+  if (button ==='SIMPAN'){
+    console.log ('data before send', data);
+    axios.post('http://10.0.2.2:3004/localusers', data)
+    .then(res=>{
+      console.log('res: ', res);
+      setNama("");
+      setAlamat("");
+      setEmail("");
+      getData();
+    })
+  } else if (button ==='UPDATE'){
+    axios.put(`http://10.0.2.2:3004/localusers/${selectedUser.id}`, data)
+    .then(res=> {
+      console.log('res update:', res);
+      setNama("");
+      setAlamat("");
+      setEmail("");
+      getData();
+      setButton("SIMPAN");
+    })
+  }
 }
 
 const getData = () =>{
   axios.get('http://10.0.2.2:3004/localusers')
   .then(res=> {console.log('res get data:', res);
-  setusers(res.data);
+  setUsers(res.data);
   }) 
+}
+
+const selectItem = (item) =>{
+console.log('select item: ', item);
+setSelectedUser(item);
+setNama(item.nama);
+setAlamat(item.alamat);
+setEmail(item.email);
+setButton("UPDATE");
 }
 
   return (
@@ -63,13 +88,13 @@ const getData = () =>{
         <TextInput style={styles.textinputan} placeholderTextColor='#bdc3c7' placeholder='Masukan email aktif'value={email} onChangeText={(value)=>setEmail(value)}/>
       </View>
       <View style={styles.viewtombol}>
-      <Button title='Simpan' color='black' onPress={submit}/>
+      <Button title={button} color='black' onPress={submit}/>
       </View>
       <View style={styles.garis}/>
       <View style={styles.area}>
       <Text style={styles.subjudul}>HASIL FORM</Text>
       {users.map(user=>{
-        return <Item key={user.id} nama={user.nama} alamat={user.alamat} email={user.email}/>
+        return <Item key={user.id} nama={user.nama} alamat={user.alamat} email={user.email} onpress={()=>selectItem(user)}/>
       })}
       {/* <Item/>
       <Item/>
@@ -133,7 +158,7 @@ const styles = StyleSheet.create({
   },
   garis:{
     height:2,
-    backgroundColor: 'white',
+    backgroundColor: '#f8a5c2',
     marginVertical:30
   },
   avatar:{
@@ -145,7 +170,7 @@ const styles = StyleSheet.create({
   },
   areahasil:{
     flexDirection:'row',
-    backgroundColor: '#a29bfe',
+    backgroundColor: '#6c5ce7',
     marginHorizontal:20,
     alignItems:'center',
     elevation: 5,

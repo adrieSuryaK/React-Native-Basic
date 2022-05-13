@@ -17,6 +17,18 @@
       "alamat": "pajang",
       "email": "fiean@email.com",
       "id": 3
+    },
+    {
+      "nama": "widya",
+      "alamat": "gatak",
+      "email": "widya@email.com",
+      "id": 4
+    },
+    {
+      "nama": "aqila",
+      "alamat": "gatak",
+      "email": "aqila@email.com",
+      "id": 5
     }
   ]
 }
